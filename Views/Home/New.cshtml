@@ -1,0 +1,53 @@
+@using WeddingPlanner.Models
+@model IndexWrapper
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Planner</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-sm-10">
+            <h1>Plan Your Wedding </h1>
+             <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Log Out</a>
+            <form asp-action="AddWedding" asp-controller="Home" method="POST">
+            <span asp-validation-for="OneWedding.WedderOne"></span>
+            <label asp-for="OneWedding.WedderOne"></label>
+            <input asp-for="OneWedding.WedderOne">
+            <br>
+            <span asp-validation-for="OneWedding.WedderTwo"></span>
+            <label asp-for="OneWedding.WedderTwo"></label>
+            <input asp-for="OneWedding.WedderTwo">
+            <br>
+            <span asp-validation-for="OneWedding.WeddingDate"></span>
+            <label asp-for="OneWedding.WeddingDate"></label>
+            <input asp-for="OneWedding.WeddingDate">
+            <br>
+            <span asp-validation-for="OneWedding.Address"></span>
+            <label asp-for="OneWedding.Address"></label>
+            <input asp-for="OneWedding.Address">
+            <br>
+            <button>Create</button>
+        </form>
+                
+
+
+            
+
+        </div>
+
+    </div>
+
+
+</div>
+    
+    
+</body>
+</html>

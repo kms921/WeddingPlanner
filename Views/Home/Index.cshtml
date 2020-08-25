@@ -1,0 +1,74 @@
+@using WeddingPlanner.Models 
+@model IndexWrapper
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Planner</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="header">
+        <h1>Wedding Planner</h1>
+    </div>
+    <br>
+    <div class="form-group col-md-6">
+        <form  asp-action="CreateUser" asp-controller="Home" method="post">
+            <h3>Register Here: </h3>
+                <div class="form-group col-md-6">
+                    <span  asp-validation-for="FormModel.FirstName"></span>
+                    <label asp-for="FormModel.FirstName"></label>
+                    <input class="form-control" asp-for="FormModel.FirstName">
+                </div>
+                <div class="form-group col-md-6">
+                    <span  asp-validation-for="FormModel.LastName"></span>
+                    <label asp-for="FormModel.LastName"></label>
+                    <input class="form-control" asp-for="FormModel.LastName">
+                </div>
+                <div class="form-group col-md-6">
+                    <span asp-validation-for="FormModel.Email"></span>
+                    <label asp-for="FormModel.Email"></label>
+                    <input class="form-control" asp-for="FormModel.Email">
+                </div>
+                <div class="form-group col-md-6">
+                    <span asp-validation-for="FormModel.Password"></span>
+                    <label asp-for="FormModel.Password"></label>
+                    <input class="form-control" asp-for="FormModel.Password">
+                </div>
+                <div class="form-group col-md-6">
+                    <span asp-validation-for="FormModel.Confirm"></span>
+                    <label asp-for="FormModel.Confirm"></label>
+                    <input class="form-control" asp-for="FormModel.Confirm">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+       
+    </div>
+    <div class="form-group col-md-6">
+        <form class="col" id="container2" asp-action="ProcessLogin" asp-controller="Home" method="POST">
+            <h3>Or Login Below</h3>
+                <div class="form-group col-md-6">
+                    <span asp-validation-for="UserLogin.Email"></span>
+                    <label asp-for="UserLogin.Email"></label>
+                    <input asp-for="UserLogin.Email"class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <span asp-validation-for="UserLogin.Password"></span>
+                    <label asp-for="UserLogin.Password"></label>
+                    <input asp-for="UserLogin.Password" class="form-control">
+                </div>
+                <div class="form-group col-md-6">
+                    <input type="submit" value="Submit">
+                </div>
+            </form>
+    </div>
+        
+    
+    
+</body>
+</html>

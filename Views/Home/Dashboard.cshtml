@@ -1,0 +1,72 @@
+@using WeddingPlanner.Models
+@model IndexWrapper
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Planner</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container"><h1>Welcome to the Wedding Planner</h1></div>
+    <div class="container">
+        <table class="table col-sm-10 offset-sm-1">
+            <thead>
+                <tr>
+                <th>Wedding</th> 
+                <th>Date</th>
+                <th>Guests</th>
+                <th>Action</th>
+                </tr>
+            </thead>
+           <tbody>
+               
+                @foreach (Wedding wedding in Model.AllWeddings)
+                { Boolean IsGoing = false;
+                    foreach (var guest in wedding.Guests)
+                    {
+                        if (guest.UserId == Model.CurrentUser)
+                        {
+                            IsGoing = true;
+                        }
+                    }
+                    <tr>
+                        <td><a href="/wedding/@wedding.WeddingId">@wedding.WedderOne & @wedding.WedderTwo</a></td>
+                        <td>@wedding.WeddingDate.ToString("MMM d, yyyy")</td>
+                        <td>@wedding.Guests.Count</td>
+                        
+                    
+                    <td>
+                            @if (wedding.WeddingId == Model.CurrentUser)
+                            {
+                                 <form asp-action="Delete" asp-route-id="@wedding.WeddingId" asp-controller="Home" method="POST">
+                                    <button>Delete</button>
+                                </form>
+                            }
+
+                            @if (!IsGoing && wedding.WeddingId != Model.CurrentUser)
+                            {
+                                <form asp-action="RSVP" asp-route-id="@wedding.WeddingId" asp-controller="Home" method="POST">
+                                    <button>RSVP</button>
+                                </form>
+                            }
+
+                            @if (IsGoing && wedding.WeddingId != Model.CurrentUser)
+                            {
+                                <form asp-action="UNRSVP" asp-route-id="@wedding.WeddingId" asp-controller="Home" method="POST">
+                                    <button>Un-RSVP</button>
+                                </form>
+                            }
+                        </td>
+                        </tr>
+                }
+            </tbody>
+        </table>
+        </div>
+        <div class="container">
+                    <a href="/new/wedding">Add a Wedding</a>
+        </div>
+        </body>
+</html>

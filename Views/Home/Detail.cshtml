@@ -1,0 +1,29 @@
+@using WeddingPlanner.Models 
+@model IndexWrapper
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Planner</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+</head>
+<body>
+    <div class="container">
+        <h1>@Model.OneWedding.WedderOne And @Model.OneWedding.WedderTwo's Wedding</h1><br>
+        <h3>@Model.OneWedding.WeddingDate.ToString("MMMM, dd, yyyy")</h3>
+        <h3>Guests</h3>
+        <ul>
+        @foreach(var guest in Model.OneWedding.Guests){
+            <li>@guest.User.FirstName @guest.User.LastName</li>
+        }
+        </ul>
+
+    </div>
+    <div>
+
+    </div>
+    
+</body>
+</html>
