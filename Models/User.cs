@@ -20,7 +20,7 @@ namespace WeddingPlanner.Models
     public List<WeddingGuest> Guests {get; set; }
     [DataType(DataType.Password)]
     [Required]
-    [MinLength(8, ErrorMessage="Password must be 8 characters or longer!")]
+    [MinLength(7, ErrorMessage="Password must be 7 characters or longer!")]
     public string Password {get;set;}
     public DateTime CreatedAt {get;set;} = DateTime.Now;
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
